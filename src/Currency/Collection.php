@@ -6,7 +6,7 @@ namespace Axm\Currency;
  *
  * @package Axm\Currency
  */
-class Collection
+class Collection implements \Countable
 {
     /**
      * The array of Currency Config objects loaded
@@ -78,5 +78,13 @@ class Collection
         }
 
         return $config;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function count()
+    {
+        return count($this->collection);
     }
 }
