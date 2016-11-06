@@ -24,13 +24,13 @@ describe(Collection::class, function () {
                 $iso_code = 'FOO';
 
                 $currency_collection = new Collection;
-                $collection_array1 = ReflectionHelper::getPropertyValue($currency_collection, 'collection');
+                $collection_array1 = ReflectionHelper::getDirectPropertyValue($currency_collection, 'collection');
 
                 expect($collection_array1)->toHaveLength(0);
 
                 $currency_config = new Config($iso_code);
                 $currency_collection->push($currency_config);
-                $collection_array2 = ReflectionHelper::getPropertyValue($currency_collection, 'collection');
+                $collection_array2 = ReflectionHelper::getDirectPropertyValue($currency_collection, 'collection');
 
                 expect($collection_array2)->toHaveLength(1);
                 expect($collection_array2[$iso_code])->toBe($currency_config);
@@ -59,7 +59,7 @@ describe(Collection::class, function () {
                 $currency_collection = new Collection;
                 $currency_config = new Config($iso_code);
                 $currency_collection->override($currency_config);
-                $collection_array = ReflectionHelper::getPropertyValue($currency_collection, 'collection');
+                $collection_array = ReflectionHelper::getDirectPropertyValue($currency_collection, 'collection');
 
                 expect($collection_array)->toHaveLength(1);
                 expect($collection_array[$iso_code])->toBe($currency_config);
@@ -88,6 +88,25 @@ describe(Collection::class, function () {
                 $currency_collection->push($currency_config);
 
                 expect($currency_collection->get($iso_code))->toBe($currency_config);
+            });
+        });
+
+        context('when the overrides exists', function () {
+            it('retrieves an overridden config instance', function () {
+                $iso_code = 'FOO';
+                $currency_collection = new Collection;
+                $currency_collection->push(new Config($iso_code));
+
+                $overrides = [
+                    'currency_symbol' => '~',
+                    'decimal_spaces' => 1,
+                    'decimal_separator' => '!',
+                    'thousand_separator' => '@'
+                ];
+
+                $currency_config = $currency_collection->get($iso_code, $overrides);
+
+                expect($currency_config)->not->toBe($currency_collection->get($iso_code));
             });
         });
     });

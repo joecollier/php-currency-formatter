@@ -58,18 +58,25 @@ class Collection
     /**
      * Retrieves a Currency Config object with the given key/iso code if it exists
      *
-     * @param $iso_code The key/iso code of the object to retrieve
+     * @param string $iso_code The key/iso code of the object to retrieve
+     * @param array $overrides Optional properties to override when getting the Currency Config
      *
      * @throws \InvalidArgumentException
      *
-     * @return mixed
+     * @return Config A Currency Config
      */
-    public function get($iso_code)
+    public function get($iso_code, array $overrides = [])
     {
         if (!$this->hasKey($iso_code)) {
             throw new \InvalidArgumentException('The key `' . $iso_code . '` does not exist');
         }
 
-        return $this->collection[$iso_code];
+        $config = $this->collection[$iso_code];
+
+        if ($overrides) {
+            return Config::buildFromOverride($config, $overrides);
+        }
+
+        return $config;
     }
 }
