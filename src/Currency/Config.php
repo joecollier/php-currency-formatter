@@ -66,6 +66,36 @@ class Config
     }
 
     /**
+     * Creates a Currency Config from an existing one with additional properties
+     *
+     * @param Config $config A Currency Config to use as the base
+     * @param array $overrides An array of Currency Config properties to use
+     *
+     * @return Config The new Currency Config
+     */
+    public static function buildFromOverride(Config $config, array $overrides)
+    {
+        $config_array = array_merge($config->toArray(), $overrides);
+        return new Config($config_array['iso_code'], $config_array);
+    }
+
+    /**
+     * Returns the Currency Config as an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'iso_code' => $this->iso_code,
+            'currency_symbol' => $this->currency_symbol,
+            'decimal_spaces' => $this->decimal_spaces,
+            'decimal_separator' => $this->decimal_separator,
+            'thousand_separator' => $this->thousand_separator
+        ];
+    }
+
+    /**
      * @return string
      */
     public function getIsoCode()
