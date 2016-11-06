@@ -11,17 +11,33 @@ use Cake\Utility\Inflector;
 class ReflectionHelper
 {
     /**
-     * Retrieves the value of a protected or private property of a given object
+     * Retrieves the value of a protected or private static property of a given class
      *
-     * @param object $object The object holding the protected or private property
-     * @param string $property The property name to retrieve
+     * @param string $class_name The object holding the protected or private property
+     * @param string $property_name The property name to retrieve
      *
      * @return mixed
      */
-    public static function getDirectPropertyValue($object, $property)
+    public static function getStaticPropertyValue($class_name, $property_name)
+    {
+        $r = new \ReflectionClass($class_name);
+        $prop = $r->getProperty($property_name);
+        $prop->setAccessible(true);
+        return $prop->getValue($class_name);
+    }
+
+    /**
+     * Retrieves the value of a protected or private property of a given object
+     *
+     * @param object $object The object holding the protected or private property
+     * @param string $property_name The property name to retrieve
+     *
+     * @return mixed
+     */
+    public static function getDirectPropertyValue($object, $property_name)
     {
         $r = new \ReflectionObject($object);
-        $prop = $r->getProperty($property);
+        $prop = $r->getProperty($property_name);
         $prop->setAccessible(true);
         return $prop->getValue($object);
     }
@@ -30,13 +46,13 @@ class ReflectionHelper
      * Retrieves the property value of a given object using a getter method
      *
      * @param object $object The object holding the protected or private property
-     * @param string $property The property name to retrieve
+     * @param string $property_name The property name to retrieve
      *
      * @return mixed
      */
-    public static function getGetterPropertyValue($object, $property)
+    public static function getGetterPropertyValue($object, $property_name)
     {
-        $getter_func = static::buildGetterFromProperty($property);
+        $getter_func = static::buildGetterFromProperty($property_name);
         return $object->{$getter_func}();
     }
 
@@ -44,6 +60,7 @@ class ReflectionHelper
      * Returns a getter method name based on the property name
      *
      * @param string $property_name
+     *
      * @return string
      */
     public static function buildGetterFromProperty($property_name)
