@@ -4,22 +4,17 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
-      - javascript
-      - python
       - php
   fixme:
     enabled: true
   phpmd:
     enabled: true
+  phpcodesniffer:
+      enabled: true
+      config:
+        standard: "PSR1,PSR2"
 ratings:
   paths:
-  - "**.inc"
-  - "**.js"
-  - "**.jsx"
-  - "**.module"
   - "**.php"
-  - "**.py"
-  - "**.rb"
 exclude_paths:
 - tests/
