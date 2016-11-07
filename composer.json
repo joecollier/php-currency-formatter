@@ -1,6 +1,6 @@
 {
   "name": "amoreno/currency-formatter",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "PHP Lib for formatting currencies according to currency code",
   "type": "library",
   "license": "MIT",
