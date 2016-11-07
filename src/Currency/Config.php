@@ -43,6 +43,13 @@ class Config
     protected $thousand_separator;
 
     /**
+     * The currency label
+     *
+     * @var string
+     */
+    protected $label;
+
+    /**
      * Currency Config constructor
      *
      * @param string $iso_code The ISO 4217 currency code
@@ -54,7 +61,8 @@ class Config
             'currency_symbol' => '$',
             'decimal_spaces' => 2,
             'decimal_separator' => '.',
-            'thousand_separator' => ','
+            'thousand_separator' => ',',
+            'label' => null
         ];
         $config = array_merge($defaults, $config_array);
 
@@ -63,6 +71,9 @@ class Config
         $this->decimal_spaces = $config['decimal_spaces'];
         $this->decimal_separator = $config['decimal_separator'];
         $this->thousand_separator = $config['thousand_separator'];
+        $this->label = is_null($config['label'])
+            ? $this->iso_code
+            : $config['label'];
     }
 
     /**
@@ -91,7 +102,8 @@ class Config
             'currency_symbol' => $this->currency_symbol,
             'decimal_spaces' => $this->decimal_spaces,
             'decimal_separator' => $this->decimal_separator,
-            'thousand_separator' => $this->thousand_separator
+            'thousand_separator' => $this->thousand_separator,
+            'label' => $this->label
         ];
     }
 
@@ -133,5 +145,13 @@ class Config
     public function getThousandSeparator()
     {
         return $this->thousand_separator;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
     }
 }

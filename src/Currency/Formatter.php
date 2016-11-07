@@ -29,6 +29,16 @@ class Formatter
     }
 
     /**
+     * Returns the current Currency Collection used when formatting currencies
+     *
+     * @return Collection
+     */
+    public static function getCollection()
+    {
+        return self::$collection;
+    }
+
+    /**
      * Returns a currency formatted string according to the Currency Config
      *
      * @param string|number $number The string or number to format
@@ -101,7 +111,11 @@ class Formatter
      */
     protected static function handleLabel(Config $config)
     {
-        return $config->getIsoCode();
+        $label = $config->getLabel();
+
+        return (trim($label) === '')
+            ? ''
+            : ' ' . $label;
     }
 
     /**
@@ -115,6 +129,6 @@ class Formatter
      */
     protected static function handleFormat($symbol, $number, $label)
     {
-        return sprintf('%s%s %s', $symbol, $number, $label);
+        return sprintf('%s%s%s', $symbol, $number, $label);
     }
 }
