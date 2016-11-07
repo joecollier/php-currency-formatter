@@ -1,0 +1,29 @@
+[
+  {
+    "iso_code": "USD",
+    "currency_symbol": "$",
+    "decimal_spaces": 2,
+    "decimal_separator": ".",
+    "thousand_separator": ",",
+    "sample_number": 1234.56,
+    "sample_string": "$1,234.56 USD"
+  },
+  {
+    "iso_code": "GBP",
+    "currency_symbol": "£",
+    "decimal_spaces": 2,
+    "decimal_separator": ",",
+    "thousand_separator": ".",
+    "sample_number": 1234.56,
+    "sample_string": "£1.234,56 GBP"
+  },
+  {
+    "iso_code": "CLP",
+    "currency_symbol": "$",
+    "decimal_spaces": 0,
+    "decimal_separator": ",",
+    "thousand_separator": ".",
+    "sample_number": 1234.56,
+    "sample_string": "$1.235 CLP"
+  }
+]
