@@ -131,7 +131,7 @@ class Formatter
      *
      * @return string A formatted string
      */
-    protected static function handleFormat($symbol, $number, $label, $prepend_symbol)
+    protected static function handleFormat($symbol, $number, $label, $prepend_symbol = false)
     {
         if (!$prepend_symbol) {
             return sprintf('%s%s%s', $number, $symbol, $label);

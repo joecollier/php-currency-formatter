@@ -70,7 +70,7 @@ class Config
             'decimal_separator' => '.',
             'thousand_separator' => ',',
             'label' => null,
-            'prepend_symbol' => true
+            'prepend_symbol' => false
         ];
         $config = array_merge($defaults, $config_array);
 
