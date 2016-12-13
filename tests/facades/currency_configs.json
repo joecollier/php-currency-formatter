@@ -6,7 +6,8 @@
     "decimal_separator": ".",
     "thousand_separator": ",",
     "sample_number": 1234.56,
-    "sample_string": "$1,234.56 USD"
+    "sample_string": "$1,234.56 USD",
+    "prepend_symbol": true
   },
   {
     "iso_code": "GBP",
@@ -15,7 +16,8 @@
     "decimal_separator": ",",
     "thousand_separator": ".",
     "sample_number": 1234.56,
-    "sample_string": "£1.234,56 GBP"
+    "sample_string": "£1.234,56 GBP",
+    "prepend_symbol": true
   },
   {
     "iso_code": "CLP",
@@ -24,7 +26,8 @@
     "decimal_separator": ",",
     "thousand_separator": ".",
     "sample_number": 1234.56,
-    "sample_string": "$1.235 CLP"
+    "sample_string": "$1.235 CLP",
+    "prepend_symbol": true
   },
   {
     "iso_code":"FRA",
