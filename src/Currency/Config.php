@@ -45,7 +45,7 @@ class Config
     /**
      * Determines placement of currency symbol (relative to price string)
      *
-     * @var string
+     * @var bool
      */
     public $prepend_symbol;
 
@@ -158,7 +158,7 @@ class Config
     }
 
     /**
-     * @return string
+     * @return bool
      */
     public function getPrependSymbol()
     {
