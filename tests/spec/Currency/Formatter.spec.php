@@ -61,7 +61,7 @@ describe(Formatter::class, function () {
             }
         });
 
-        it('formats a number into a currency string 2', function () {
+        it('formats int into a currency string with currency symbol appended at end', function () {
             /** @var Formatter $formatter */
             $formatter = $this->formatter;
 
