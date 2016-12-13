@@ -133,7 +133,7 @@ class Formatter
      */
     protected static function handleFormat($symbol, $number, $label, $prepend_symbol)
     {
-        if ($prepend_symbol === false) {
+        if (!$prepend_symbol) {
             return sprintf('%s%s%s', $number, $symbol, $label);
         }
 
