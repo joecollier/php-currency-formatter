@@ -25,5 +25,16 @@
     "thousand_separator": ".",
     "sample_number": 1234.56,
     "sample_string": "$1.235 CLP"
+  },
+  {
+    "iso_code":"FRA",
+    "currency_symbol":"€",
+    "decimal_spaces":2,
+    "decimal_separator":",",
+    "thousand_separator":".",
+    "sample_number": 6999.99,
+    "sample_string": "6.999,99€ EUR",
+    "symbol_placement": "append",
+    "label": "EUR"
   }
 ]

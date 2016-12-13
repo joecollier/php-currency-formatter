@@ -61,6 +61,16 @@ describe(Formatter::class, function () {
             }
         });
 
+        it('formats a number into a currency string 2', function () {
+            /** @var Formatter $formatter */
+            $formatter = $this->formatter;
+
+            $actual = $formatter::format(6999.99, 'FRA');
+            $expected = '6.999,99€ EUR';
+
+            expect($actual)->toBe($expected);
+        });
+
         it('allows format settings to be overriden', function () {
             /** @var Formatter $formatter */
             $formatter = $this->formatter;
