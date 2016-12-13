@@ -58,7 +58,7 @@ class Formatter
         $number = self::handleNumber($number, $config);
         $label = self::handleLabel($config);
 
-        return self::handleFormat($symbol, $number, $label, $config->symbol_placement);
+        return self::handleFormat($symbol, $number, $label, $config->prepend_symbol);
     }
 
     /**
@@ -130,9 +130,9 @@ class Formatter
      *
      * @return string A formatted string
      */
-    protected static function handleFormat($symbol, $number, $label, $placement)
+    protected static function handleFormat($symbol, $number, $label, $prepend_symbol)
     {
-        if ($placement == 'append') {
+        if ($prepend_symbol === false) {
             return sprintf('%s%s%s', $number, $symbol, $label);
         }
 

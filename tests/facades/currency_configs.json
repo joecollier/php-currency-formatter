@@ -34,7 +34,7 @@
     "thousand_separator":".",
     "sample_number": 6999.99,
     "sample_string": "6.999,99€ EUR",
-    "symbol_placement": "append",
+    "prepend_symbol": false,
     "label": "EUR"
   }
 ]

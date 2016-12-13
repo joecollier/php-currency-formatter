@@ -43,11 +43,11 @@ class Config
     protected $thousand_separator;
 
     /**
-     * Placement of currency symbol (relative to price string)
+     * Determines placement of currency symbol (relative to price string)
      *
      * @var string
      */
-    public $symbol_placement;
+    public $prepend_symbol;
 
     /**
      * The currency label
@@ -70,7 +70,7 @@ class Config
             'decimal_separator' => '.',
             'thousand_separator' => ',',
             'label' => null,
-            'symbol_placement' => 'prepend'
+            'prepend_symbol' => true
         ];
         $config = array_merge($defaults, $config_array);
 
@@ -82,7 +82,7 @@ class Config
         $this->label = is_null($config['label'])
             ? $this->iso_code
             : $config['label'];
-        $this->symbol_placement = $config['symbol_placement'];
+        $this->prepend_symbol = $config['prepend_symbol'];
     }
 
     /**
@@ -113,7 +113,7 @@ class Config
             'decimal_separator' => $this->decimal_separator,
             'thousand_separator' => $this->thousand_separator,
             'label' => $this->label,
-            'symbol_placement' => $this->symbol_placement
+            'prepend_symbol' => $this->prepend_symbol
         ];
     }
 
@@ -160,9 +160,9 @@ class Config
     /**
      * @return string
      */
-    public function getSymbolPlacement()
+    public function getPrependSymbol()
     {
-        return $this->symbol_placement;
+        return $this->prepend_symbol;
     }
 
     /**
