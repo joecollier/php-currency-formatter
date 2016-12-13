@@ -127,6 +127,7 @@ class Formatter
      * @param string $symbol
      * @param number $number
      * @param string $label
+     * @param string $prepend_symbol
      *
      * @return string A formatted string
      */
